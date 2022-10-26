@@ -1,0 +1,56 @@
+## Motivation {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Known to be **vulnerable** \
+- Packages not tested for malicious code [@wickham2015r]\
+- Known flawed language design [@morandat2012evaluating]\
+- Slow and bad response to log4j vuln ^[https://stat.ethz.ch/pipermail/r-package-devel/2021q4/007589.html]  
+
+
+. . . 
+
+\
+\
+\
+
+Q: Is this $\color{red}{\text{the}}$ tool to use in **my** business processes?
+
+## Motivation {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+An example of non-obvious injection  
+
+``` {.R }
+lm(mpg ~ wt + system("whoami"), mtcars)
+```
+
+```
+lm(mpg ~ wt + system("whoami"), mtcars)
+#> pc\d
+Error in model.frame.default(formula = mpg ~ wt + system("whoami"), data = mtcars,  : 
+  variable lengths differ (found for 'system("whoami")')
+```
+
+## Motivation {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Its security properties are not as thoroughly researched as other languages
+
+Such as Python [@turner2014security; @peng2019python]  
+C/C++ [@viega2000its4; @verdi2020empirical]  
+
+Indeed, I found 3 papers, total < 30 citations!
+
+## Motivation {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+**Existing solutions**\
+
+::: incremental
+-   Commercial server-based products ^[[Teams](https://www.rstudio.com/products/team/)]
+-   Linux dynamic sandboxing [@JSSv055i07]\
+-   User managed repos [@blaette2018using]\
+-   [Docker](https://github.com/rocker-org/rocker) containers
+-   `callr` forking sessions\
+-   `box`, `oysteR`, `notary`, ...  
+:::
+
+. . . 
+
+These require $\color{red}{\text{knowledge}}$ and $\color{red}{\text{effort}}$ of people who have $\color{red}{\text{better things to do}}$.

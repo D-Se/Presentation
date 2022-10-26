@@ -1,0 +1,55 @@
+---
+title: "Coat: toolkit to run R code safely"
+author: "Donald Seinen"
+date: today
+bibliography: ref.bib
+csl: ieee.csl
+format:
+  revealjs:
+    theme: simple
+    css: styles.scss
+    df-print: kable
+    reference-location: document
+    
+    smaller: true
+    center: true
+    
+    transition: slide
+    transition-speed: fast
+    fig-width: 9
+    fig-height: 9
+    tbl-cap-location: top
+    fig-cap-location: top
+    
+    progress: true
+    slide-number: true
+    
+    chalkboard:
+      chalk-effect: 0.2
+---
+
+{{< include _background.qmd >}}
+{{< include _motivation.qmd >}}
+{{< include _study_plan.qmd >}}
+
+<!-- separate reference page -->
+
+## Conclusion {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Goal 1: Explore practical software security methods.  
+Goal 2: Make a toolkit to evaluate $\color{red}{\text{arbitrary}}$ R expressions.  
+Goal 3: Deploy an API
+
+Long-term goal: approximate a *security* value attribute $x$ of a tool as $\{x \in \Bbb{R} \mid 0<x<1\}$ based on expert opinions.
+
+::: footer
+source code and CI repo available after lecture
+:::
+
+## References
+::: {#refs}
+:::
+
+## Appendices
+
+![](images/R-startup.svg)

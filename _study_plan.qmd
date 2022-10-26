@@ -1,0 +1,60 @@
+## Study plan {.ctr auto-animate="true" auto-animate-easing="ease-in-out"}
+
+```{mermaid}
+stateDiagram
+    %% direction LR
+    vec: attack vector
+    test: unit tests
+    state join_state <<join>>
+    state fork_state <<fork>>
+    [*] --> review
+    state review {
+      direction LR
+      vec --> test
+      
+      R --> parser
+      R --> compiler
+      R --> packages
+      
+      software
+      literature
+      state software {
+      Docker
+      }
+      
+      state literature {
+      papers docs
+      }
+      
+    }
+    review --> package
+    review --> CTF
+    sitrep --> report
+    
+    CTF --> sitrep
+    package --> sitrep
+   
+    package --> fork_state
+    fork_state --> Module1
+    fork_state --> Module2
+    Module2 --> Image
+    
+    Module1 --> join_state
+    Module2 --> join_state
+    join_state --> CRAN
+    
+    report --> publish?
+    report --> [*]
+    
+    CTF --> deploy
+```
+
+## Study plan {.ctr auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Scope limitation  
+-  Custom evaluation environment  
+-  Store a hash of AST  
+-  Verify start-up procedures  
+-  Input validation through custom grammar  
+
+Estimated time: $\color{red}{\text{~ 10 weeks}}$

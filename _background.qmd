@@ -1,0 +1,142 @@
+
+## Background {.smaller auto-animate="true" auto-animate-easing="ease-in-out"}
+
+`whoami`: Research interest in [data asset valuation](https://en.wikipedia.org/wiki/Data_valuation). Publications in Economics & Human Behavior research. CEO of a data trade start-up ^[Early stage privacy-preserving data trade marketplace].
+
+<!-- ORCID: 0000-0002-4343-5851 -->
+
+. . . 
+
+![](images/marketplaces.png){fig-align="center"}
+
+. . . 
+
+::: r-hstack
+
+```{=tex}
+\begin{align*}
+\omega &\approx \sum_{i=1}^{n} f(x_i)\\
+\omega &\approx x_{i_{rel}} + x_{i_{acc}} + x_{i_{...}} ... x_{n_{...}}
+\end{align*}
+```
+
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #3fb618; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #e83e8c; width: 200px; height: 150px; margin: 10px;"}
+:::
+:::
+
+## Background {.smaller auto-animate="true" auto-animate-easing="ease-in-out"}
+
+--> Security $\color{red}{\text{augments}}$ data value creation, but is $\color{red}{\text{scarcely researched}}$ as a value driver.
+
+::: r-stack
+::: {data-id="box1" style="background: #2780e3; width: 350px; height: 350px; border-radius: 200px;"}
+:::
+
+::: {data-id="box2" style="background: #3fb618; width: 250px; height: 250px; border-radius: 200px;"}
+:::
+
+::: {data-id="box3" style="background: #e83e8c; width: 150px; height: 150px; border-radius: 200px;"}
+:::
+
+:::
+
+. . . 
+
+--> Tools influence asset value. How to evaluate tool security?  
+--> $\color{red}{\text{Case study:}}$ Take an insecure tool, attempt to **enhance security**.
+
+## About R
+
+![](images/R-logo.svg){height="40"} is a programming language for [statistical computing](https://www.r-project.org/) [@team1999r].  
+
+-  2 million users (2019)\
+- _**1354 companies** include \R in their tech stack [API](https://stackshare.io/api)_. \
+- 18750 available packages  
+
+Popular among non-programmers for its math-oriented implementation. 
+
+<!-- see data/leads.csv for data stackshare data dump -->
+
+## About R {background-iframe="https://www.tiobe.com/tiobe-index/"}
+
+## About R {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: panel-tabset
+
+## Python
+
+``` python
+import pandas as pd
+import statsmodels.api as sm
+
+data = pd.read_csv("mtcars.csv")
+
+x = [x for x in list(data.columns) if x not in ['mpg', 'model'] ]
+y = 'mpg'
+
+sm.OLS(data[y], data[x]).fit().summary()
+```
+
+## Julia
+
+``` julia
+using DataFrames
+using CSV
+using GLM
+
+data = DataFrame(CSV.File("mtcars.csv"))
+
+lm(Term(:mpg) ~ sum(Term.(Symbol.(names(data[:, Not([:mpg, :model])])))), data)
+```
+
+## R
+
+``` r 
+read.csv("mtcars.csv") |>
+	subset(select = - model) |>
+	lm(mpg ~ ., data = _) |>
+	summary()
+```
+
+## Other
+
+[GLM Rosetta](https://rosettacode.org/wiki/Multiple_regression#C)
+
+:::
+
+## About R {.smaller auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Interfaces to many languages.  
+
+``` {.R code-line-numbers="3"}
+read.csv("mtcars.csv") |>
+	subset(select = - model) |>
+	lm(mpg ~ ., data = _) |> # forced promise evaluation
+	summary()
+```
+
+. . . 
+
+Consider this `lm`^[[lm details](https://madrury.github.io/jekyll/update/statistics/2016/07/20/lm-in-R.html)] in presentation  
+
+.qmd -> `knitr` -> R -> C -> FORTRAN -> R -> md -> pandoc + YAML, JS, CSS, LaTeX, ...
+
+. . . 
+
+Other avenues where R is used  
+- Reports  
+- Algorithms  
+- Websites  
+- Software
+
+. . . 
+
+
+**But ...**  
+Popular, gov/bus/ind non-programmers with system level access and embedded code?
